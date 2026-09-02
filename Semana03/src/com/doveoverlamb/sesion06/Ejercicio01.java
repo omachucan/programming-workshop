@@ -43,8 +43,6 @@ public class Ejercicio01 {
             System.out.printf("%nEl monto a pagar es : %.2f%n", montoPagar);
         }
 
-        
-
         entrada.close();
 
     }
