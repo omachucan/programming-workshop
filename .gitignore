@@ -12,6 +12,10 @@ dist/
 target/ 
 out/
 
+# Compiled output
+bin/
+**/bin/
+
 # ============================== NetBeans ==============================
 
 **/nbproject/private/ 
