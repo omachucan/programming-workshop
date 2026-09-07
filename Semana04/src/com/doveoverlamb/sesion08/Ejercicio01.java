@@ -1,59 +1,48 @@
 package com.doveoverlamb.sesion08;
 
 import java.util.Scanner;
-
 public class Ejercicio01 {
 
     /**
-     * La evaluación de un postulante a un puesto de trabajo resulta en una
-     * puntuación entre 0 y 10.
-     *
-     * Se desea mostrar una descripción de la evaluación alcanzada de acuerdo
-     * con los siguientes criterios:
-     *
-     * • 0-4 → descartado • 5 → en suspenso • 6 → aceptable • 7,8 → notable • 9,
-     * 10 → sobresaliente
-     *
-     * • Escriba un programa que solicite la puntuación de un candidato y
-     * muestre la descripción que le corresponda.
-     *
+     * Escribir un programa que le permita a un docente, 
+     * 
+     * 1. Ingresar la nota de un alumno y le devuelva el mensaje “Usted obtuvo la mención de #mencion#”,
+     * 2. Reemplazando la expresión #mencion# por el valor correspondiente (String.replace), según el cuadro mostrado:
+     * 
+     *               Nota                   Mención
+     * 
+     *          > 18  y  <= 20             Excelente
+     *          > 15  y  <= 18               Bueno
+     *          >= 13 y  <= 15              Regular
+     *          < 13  y  >= 0              Deficiente
      */
+    
     public static void main(String[] args) {
-
+        
         Scanner entrada = new Scanner(System.in);
+        
+        String mensaje = "\nUsted obtuvo la mención de #mencion#";
+        
+        System.out.print("\nIngrese la nota del alumno: ");
+        
+        Integer nota = entrada.nextInt();
+        
+        String msj = switch(nota){
+            case Integer n when(n > 18  && n <= 20)-> "Excelente";
+            case Integer n when(n > 15  && n <= 18)-> "Bueno";
+            case Integer n when(n >= 13  && n <= 15)-> "Regular";
+            case Integer n when(n >= 0  && n <  13)-> "Deficiente";
+            default -> "";
+        };
+        
+        String reporte = msj.equals("") 
+                ?"\nDebe ingresar una nota correcta"
+                : mensaje.replace("#mencion#",msj);
+        
+        System.out.println(reporte);
+        
+        
+        
 
-        String descripcion = "";
-
-        System.out.print("\nIngrese la puntuacion del alumno: ");
-        int puntuacion = entrada.nextInt();
-
-        switch (puntuacion) {
-            case 0, 1, 2, 3, 4:
-                descripcion = "descartado";
-                break;
-            case 5:
-                descripcion = "en suspenso";
-                break;
-            case 6:
-                descripcion = "aceptable";
-                break;
-            case 7, 8:
-                descripcion = "notable";
-                break;
-            case 9, 10:
-                descripcion = "sobresaliente";
-                break;
-
-            default:
-
-                break;
-
-        }
-
-        if (descripcion.equals("")) {
-            System.out.println("\nLa puntuacion ingresada es incorrecta");
-        } else {
-            System.out.printf("%nLa puntuacion obtenida por el alumno genera un estado de : %s", descripcion);
-        }
     }
 }
