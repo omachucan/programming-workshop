@@ -20,8 +20,10 @@ public class Ejercicio05 {
 
         Scanner entrada = new Scanner(System.in);
 
-        int num = 1, cantNumeros = 0, cantPares = 0, cantImpares = 0, numMayor = 0, numMenor = 0;
+        int num = 1, cantNumeros = 0, cantPares = 0, cantImpares = 0, numMayor=0 , numMenor=0 ;
         int suma = 0, promedio = 0;
+        
+        System.out.println(" \n==== EJERCICIO 05 ====\n");
 
         while (num != -1) {
             System.out.println("Ingrese el numero : ");
@@ -40,11 +42,17 @@ public class Ejercicio05 {
                 } else {
                     cantImpares++;
                 }
+                
+                if(cantNumeros==1){
+                    numMayor=numMenor=num;
+                }
+                
+ 
                 if (num > numMayor) {
                     numMayor = num;
                 }
 
-                if (num < numMenor) {
+                if (num <= numMenor) {
                     numMenor = num;
                 }
 
