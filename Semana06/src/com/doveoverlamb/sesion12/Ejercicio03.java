@@ -5,66 +5,30 @@ import java.util.Scanner;
 public class Ejercicio03 {
 
     /*
-     * Ejercicio 4. Registro de estudiantes con centinela
+     * Ejercicio 3. Validación de una nota
+     * 
+     * Solicitar una nota entre 0 y 20. 
+     * Mientras el usuario ingrese un valor fuera del rango, volver a solicitarla. 
+     * Cuando la nota sea válida, mostrar el mensaje “Nota registrada”.
      *
-     * Solicitar notas repetidamente.
-     * El valor -1 finalizará el ingreso.
-     * Al terminar, mostrar cantidad de estudiantes, aprobados,
-     * desaprobados, suma de notas y promedio.
+     * • No terminar el programa ante una nota inválida. 
+     * • La validación debe realizarse mediante while.
      *
-     * Las notas válidas están entre 0 y 20.
-     * Considerar aprobado desde 12.
-     * El valor -1 no debe formar parte de los cálculos.
      */
     public static void main(String[] args) {
 
         Scanner entrada = new Scanner(System.in);
 
-        int cont = 0;
-        int aprobados = 0;
-        int desaprobados = 0;
+        boolean invalido = true;
 
-        double nota = 0;
-        double suma = 0;
-        double promedio = 0;
-
-        while (nota != -1) {
-
-            System.out.print("\nIngrese la nota respectiva (-1 para finalizar): ");
-            nota = entrada.nextDouble();
-
-            while (nota != -1 && (nota < 0 || nota > 20)) {
-
-                System.out.print("Nota inválida. Ingrese una nota entre 0 y 20: ");
-                nota = entrada.nextDouble();
+        while (invalido) {
+            System.out.print("\nIngrese una nota entre 0 y 20: ");
+            double nota = entrada.nextDouble();
+            
+            invalido =(nota<0 || nota>20);
+            
             }
-
-            if (nota != -1) {
-
-                cont++;
-                suma += nota;
-
-                if (nota >= 12) {
-                    aprobados++;
-                } else {
-                    desaprobados++;
-                }
-            }
+        System.out.println("\nNota Registrada");
         }
-
-        System.out.println("\n===== REPORTE DE NOTAS =====");
-        System.out.println("Cantidad de estudiantes: " + cont);
-        System.out.println("Aprobados: " + aprobados);
-        System.out.println("Desaprobados: " + desaprobados);
-        System.out.println("Suma de notas: " + suma);
-
-        if (cont > 0) {
-            promedio = suma / cont;
-            System.out.println("Promedio de notas: " + promedio);
-        } else {
-            System.out.println("Promedio de notas: No se ingresaron notas.");
-        }
-
-        entrada.close();
     }
-}
+
